@@ -235,6 +235,8 @@ while choice != "0":
         print("    2 - Choose a game to manage")
         print("    3 - See all scores for a player")
         
+   print("") # add a blank line after the menu
+        
     choice = input("Choice: ")# Get the user's choice
     
     if choice == "0":
@@ -260,7 +262,7 @@ issues:\n    - Didn't enter anything\n    - Name already taken")
         input("Press enter to continue.")
         print("Returning to main menu.")
         #----------
-    elif choice == "2" and len(games) > 0: # See line 52
+    elif choice == "2" and len(games) > 0: # See line 233
         print(
         """
     High Scores
@@ -300,7 +302,7 @@ to access that game: ")# Make sure that it's actually a saved game
     3 - Delete a score
     4 - Update a score
     5 - Delete this game
-    6 - Edit game settings""")
+    6 - Edit game settings/n""")
             choice = input("Choice: ")
             if choice == "0":
                 choice = "quit" # Break the while loop
@@ -437,7 +439,7 @@ first to update it.")
     """)
                     choice = input("Choice: ")
                     if choice == "1":
-                        print("Current setting:", settings[choose_game][1])
+                        print("Current setting:", settings[choose_game][0])
                         done = False # Sentry variable
                         while not done:
                             try:
@@ -454,7 +456,7 @@ again.")
                         input("Press enter to continue.")
                     elif choice == "2":
                         print("Current setting:", settings[choose_game][1])
-                        setting = ask_yes_no("Should all scores in this game\
+                        setting = ask_yes_no("Should all scores in this game \
 have to be numbers? (y/n) ")
                         if not setting:
                             print("Warning: The scores will not be sorted.")
