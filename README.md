@@ -1,5 +1,5 @@
 # High-Score
-Programs that save high scores to a file. Original program by Micheal Dawson.
+Programs that save high scores to a file. 
 
 This program was created originally as a response to the fact that the games on my calculator didn't have a good way to save highscores, and the eventual hope is that it will be able to have games write higscores to it (while still allowing manual addition of scores).
 
