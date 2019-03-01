@@ -250,14 +250,14 @@ while choice != "0":
     choice = input("Choice: ")# Get the user's choice
 
     if choice == "0":
+        save_and_exit()
         print("\nGoodbye.")# After this, the while loop will break,
                          # and the program will end.
         #----------
     elif choice == "1":
         new_game = input("What is the name of this game? ")
         while new_game == "" or new_game in games:
-            print("That is an invalid name for a game.\nPossible \
-issues:\n    - Didn't enter anything\n    - Name already taken")
+            print("That is an invalid name for a game.\nPossible issues:\n    - Didn't enter anything\n    - Name already taken")
             new_game = input("What is the name of this game? ")
         games[new_game.lower()] = []
         settings[new_game.lower()] = [5, True]
@@ -279,12 +279,10 @@ issues:\n    - Didn't enter anything\n    - Name already taken")
             print("    -", game)# Show them all avaiable games by
                                 # looping through the dictionary
 
-        choose_game = input("Enter the name of a game \
-to access that game: ")# Get user input
+        choose_game = input("Enter the name of a game to access that game: ")# Get user input
         while choose_game.lower() not in games:
             print("That game is not avaliable.")
-            choose_game = input("Enter the name of a game \
-to access that game: ")# Make sure that it's actually a saved game
+            choose_game = input("Enter the name of a game to access that game: ")# Make sure that it's actually a saved game
 
         scores = games[choose_game] # Create local var for easy access
 
@@ -321,9 +319,7 @@ to access that game: ")# Make sure that it's actually a saved game
 
                 while score == "" or ((not score.isdigit()) and
                                       settings[choose_game][1] == True):
-                    print("That is an invalid score.\n\
-Possible issues:\n    - Didn't enter anything\n    - \
-Wasn't a number")
+                    print("That is an invalid score.\nPossible issues:\n    - Didn't enter anything\n    - Wasn't a number")
                     score = input("What did the player get? ")
 
 
@@ -341,8 +337,7 @@ Possible issues:\n    - Didn't enter anything")
                         break
                 # ^Find out if player already has a score
                 if done: # And if he does, inform the user.
-                    print(name.title(), "already has a score saved \
-for this game. \nYou can update his score with option 4.")
+                    print(name.title(), "already has a score saved for this game. \nYou can update his score with option 4.")
                 else: # Otherwise, we save the score.
                     entry = (score, name)
                     scores.append(entry)
@@ -361,8 +356,7 @@ for this game. \nYou can update his score with option 4.")
                 if len(scores) > 0: # If there are any scores
                     print("Listing scores:")
                     list_scores(scores)
-                    name = input("Whose score would you like \
-to delete? ") # Get user input
+                    name = input("Whose score would you like to delete? ") # Get user input
                     done = False
                     for entry in scores:
                         if entry[1].lower() == name.lower():
@@ -376,16 +370,23 @@ to delete? ") # Get user input
                         print("Player not found.")
                     # ^ Inform them of the results
                 else: # If there aren't any scores:
-                    print("No scores have been added. Add a score \
-first to delete it.")
+                    print("No scores have been added. Add a score first to delete it.")
                 input("Press enter to continue.")
                 #----------
             elif choice == "4":
                 if len(scores) > 0: # If there are scores:
                     print("Listing scores:")
                     list_scores(scores)
-                    name = input("Whose score would you like to \
-update? ")
+                    done = False # Sentry variable
+                    while not done:
+                        name = input("Whose score would you like to update? ")
+
+                        for entry in scores: # for each score-name pair
+                            if entry[1].lower() == name.lower(): # Check
+                                        # if entry belongs to the player
+                                done = True
+                        if not done:
+                            print("Player not found.")
                     score = input("What is their new score? ")
 
                     while score == "" or ((not score.isdigit()) and
