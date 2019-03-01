@@ -180,7 +180,7 @@ def list_scores(scores):
             # Print all the scores
     else: # Otherwise, inform the user.
         print("No scores have been added.")
-    print()
+    print() # Whitespace in display.
 
 def list_players():
     rep = []
@@ -206,8 +206,8 @@ def get_players():
 
 def list_player_scores(player):
     rep = []
-    for game in games:
-        for entry in games[game]:
+    for game in games: # For each game
+        for entry in games[game]: # For each score
             if entry[1].lower() == player:
                 new_entry = (entry[0], game) # format: score, game
                 rep.append(new_entry)
