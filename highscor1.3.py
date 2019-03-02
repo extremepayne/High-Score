@@ -217,7 +217,7 @@ def list_player_scores(player):
         # Print all the scores
     print()
 
-def save-and-exit():
+def save_and_exit():
     for game in games:
         games_file[game] = games[game]
     for setting in settings:
