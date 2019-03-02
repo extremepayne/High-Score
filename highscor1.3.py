@@ -231,6 +231,8 @@ def save_and_exit():
     import sys
     sys.exit()
 
+print("Welcome to High Scores v1.3.2!")
+
 
 choice = None # Sentry variable
 while choice != "0":
@@ -240,7 +242,7 @@ while choice != "0":
     v1.3.2
 
     Main Menu
-    0 - Save and quit
+    0 - Save and exit
     1 - Add a game""")
 
     if len(games) > 0:
