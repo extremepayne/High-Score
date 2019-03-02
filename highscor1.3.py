@@ -290,7 +290,7 @@ while choice != "0":
 
 
         choice = None
-        while choice != "quit":
+        while choice != "back0":
             print(
     """
     High Scores
@@ -307,7 +307,7 @@ while choice != "0":
     6 - Edit game settings\n""")
             choice = input("Choice: ")
             if choice == "0":
-                choice = "quit" # Break the while loop
+                choice = "back0" # Break the while loop
                 games[choose_game] = scores # Save scores to main
                                             # dictionary
                 #----------
@@ -424,7 +424,7 @@ first to update it.")
                 input("Press enter to continue.")
                 #----------
             elif choice == "5":
-                choice = "quit"
+                choice = "back0"
                 del games[choose_game]
                 del settings[choose_game]
                 print("Game has been deleted.")
@@ -432,7 +432,7 @@ first to update it.")
                 #----------
             elif choice == "6":
                 choose = None
-                while choice != "back":
+                while choice != "back1":
                     print("""
     High Scores
     v1.3.2
@@ -468,10 +468,10 @@ have to be numbers? (y/n) ")
                         settings[choose_game][1] = setting
                         input("Press enter to continue.")
                     elif choice == "0":
-                        choice = "back"
-                    #else:
-                        #print("That is not a choice.")
-                        #input("Press enter to continue.")
+                        choice = "back1"
+                    else:
+                        print("That is not a choice.")
+                        input("Press enter to continue.")
                 input("Press enter to return to the game menu.")
                 #----------
             else: # Some unkown choice
