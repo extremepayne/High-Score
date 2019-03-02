@@ -227,6 +227,10 @@ def save_and_exit():
     settings_file.sync()
     settings_file.close()
 
+    input("\n\n Press enter to exit")
+    import sys
+    sys.exit()
+
 
 choice = None # Sentry variable
 while choice != "0":
@@ -251,8 +255,6 @@ while choice != "0":
 
     if choice == "0":
         save_and_exit()
-        print("\nGoodbye.")# After this, the while loop will break,
-                         # and the program will end.
         #----------
     elif choice == "1":
         new_game = input("What is the name of this game? ")
@@ -493,10 +495,3 @@ view? ")
     else: # Back in the main menu, some unkown choice
         print("That is not a choice.")
         input("Press enter to continue.")
-
-
-
-
-input("\n\n Press enter to exit")
-import sys
-sys.exit()
