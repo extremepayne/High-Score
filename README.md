@@ -10,7 +10,7 @@ The program works by shelving files with the highscores in them and retrieving t
 You need [python 3.x downloaded on your computer](https://www.python.org/downloads/). Clone the project. If necessary, unzip it. Yep, that's it!
 
 ## Usage
-Run the file marked `highscore1.3.py` however you [run python files](https://docs.python.org/3/faq/windows.html#id2).
+Run the file marked `highscor1.3.py` however you [run python files](https://docs.python.org/3/faq/windows.html#id2).
 #### Running python files
 The link provided is some docs on how to use the command line in windows to execute a script; there are several other options:
 * Right-click the file, open with IDLE (comes pre-loaded with python) and press F5
