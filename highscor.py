@@ -7,22 +7,6 @@
 #Last updated 11/10/17
 #A progam to keep track of highscores
 
-
-#Version History:
-
-#1.0 - completed 11/10/17
-#Features:
-# Save highscores to multiple game files.
-# Add, update, view and delete highscores.
-# Delete and edit game files.
-
-#1.0.1 - completed 11/10/17
-#Updates:
-# Improved error-checking (refuses to try to delete or update
-# scores if there are none)
-# Less redundant code (list_scores function)
-# More comments
-
 #Coming in upcoming editions:
 # View all scores attributed to a player (probably v1.2)
 # Save highscores to a off-program file (probably v1.1)
@@ -52,14 +36,14 @@ while choice != "0":
     Main Menu
     0 - Quit
     1 - Add a game""")
-    
+
     if len(games) > 0:
         # Best not to let the user access the games' files until
         # they've created some!
         print("    2 - Choose a game to manage")
-        
+
     choice = input("Choice: ")# Get the user's choice
-    
+
     if choice == "0":
         print("Goodbye.")# After this, the whil loop will break, and
                          # the program will end.
@@ -81,20 +65,20 @@ while choice != "0":
 
     List of games
     """)
-        
+
         for game in games:
             print("    -", game)# Show them all avaiable games by
                                 # looping through the dictionary
-            
+
         choose_game = input("Enter the name of a game \
 to access that game: ")# Get user input
         while choose_game.lower() not in games:
             print("That game is not avaliable.")
             choose_game = input("Enter the name of a game \
 to access that game: ")# Make sure that it's actually a saved game
-            
+
         scores = games[choose_game] # Create local var for easy access
-        
+
         choice = None
         while choice != "quit":
             print(
@@ -228,16 +212,8 @@ again.")
     else: # Back in the main menu, some unkown choice
         print("That is not a choice.")
         input("Press enter to continue.")
-        
-    
+
+
 
 
 input("\n\n Press enter to exit")
-
-
-
-
-
-
-
-    
