@@ -1,4 +1,4 @@
-#Highscores program v1.3.2
+#HighScor program v1.3.3
 #Idea & orignal code - Micheal Dawson. As shown in
 #Python Programming for the Complete Beginner
 #under name "High Scores 2.0"
@@ -120,15 +120,15 @@ def ask_yes_no(question):
 
 # -----MAIN-----
 
-print("Welcome to High Scores v1.3.2!\nEnter \"quit\" at any prompt to save and exit.")
+print("Welcome to HighScor v1.3.3!\nEnter \"quit\" at any prompt to save and exit.")
 
 
 choice = None # Sentry variable
 while choice != "0":
     print(
     """
-    High Scores
-    v1.3.2
+    HighScor
+    v1.3.3
 
     Main Menu
     0 - Save and exit
@@ -162,8 +162,8 @@ while choice != "0":
     elif choice == "2" and len(games) > 0: # See line 233
         print(
         """
-    High Scores
-    v1.3.2
+    HighScor
+    v1.3.3
 
     Manage games and scores
 
@@ -188,8 +188,8 @@ while choice != "0":
         while choice != "back0":
             print(
     """
-    High Scores
-    v1.3.2
+    HighScor
+    v1.3.3
     """)
             print("   ", choose_game.title(), "Menu")
             print("""
@@ -356,8 +356,8 @@ Wasn't a number")
                 choice = None
                 while choice != "back1":
                     print("""
-    High Scores
-    v1.3.2
+    HighScor
+    v1.3.3
 
     Edit Game Settings
     0 - Return to game menu

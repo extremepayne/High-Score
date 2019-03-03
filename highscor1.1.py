@@ -1,4 +1,4 @@
-#Highscores program v1.1.2
+#HighScor program v1.1.2
 #Idea & orignal code - Micheal Dawson. As shown in
 #Python Programming for the Complete Beginner
 #under name "High Scores 2.0"
@@ -66,7 +66,7 @@ choice = None # Sentry variable
 while choice != "0":
     print(
     """
-    High Scores
+    HighScor
     v1.1.2
 
     Main Menu
@@ -99,7 +99,7 @@ issues:\n    - Didn't enter anything\n    - Name already taken")
     elif choice == "2" and len(games) > 0: # See line 52
         print(
         """
-    High Scores
+    HighScor
     v1.1.2
 
     Manage games and scores
@@ -124,7 +124,7 @@ to access that game: ")# Make sure that it's actually a saved game
         while choice != "quit":
             print(
     """
-    High Scores
+    HighScor
     v1.1.2
     """)
             print("   ", choose_game.title(), "Menu")

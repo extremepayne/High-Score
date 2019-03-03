@@ -51,8 +51,8 @@ Just press enter to continue. These often occur right after printing output, to 
 And that's all you need to know to navigate the program! If you're still confused, you can check out the wiki on this repo's [Github page](https://github.com/extremepayne/High-Score).
 
 ## Versioning explanation
-The project was originally programmed without git, so the opening comments still have some of the version history.
-Also, version 2.0 was stopped in development and contains no changes to the code. The file marked v1.3 has the current version.
+The project was originally programmed without git, so the file marked `old_version_history` still has some of the version history.
+The file marked v1.3 has the current version (v1.3.3).
 
 ## License
 Just a standard MIT license. Check `LICENSE.md` for more info.
