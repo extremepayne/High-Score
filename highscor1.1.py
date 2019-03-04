@@ -1,4 +1,4 @@
-#Highscores program v1.1.2
+#HighScor program v1.1.2
 #Idea & orignal code - Micheal Dawson. As shown in
 #Python Programming for the Complete Beginner
 #under name "High Scores 2.0"
@@ -6,34 +6,6 @@
 #Commenced 11/6/17
 #Last updated 11/14/17
 #A progam to keep track of highscores
-
-
-#Version History:
-
-#1.0 - completed 11/10/17
-#Features:
-# Save highscores to multiple game files.
-# Add, update, view and delete highscores.
-# Delete and edit game files.
-
-#1.0.1 - completed 11/10/17
-#Updates:
-# Improved error checking (refuses to try to delete or update
-# scores if there are none)
-# Less redundant code (list_scores function)
-# More comments
-
-#1.1 - completed 11/10/17
-#Updates:
-# View all scores attributed to a player
-
-#1.1.1 - completed 11/11/17
-#Updates:
-# Improved error checking (prevents names of games from being
-# duplicated, prevents empty string input)
-
-#1.1.2 - completed 11/14/17
-# Improved error checking (scores must be numbers)
 
 
 #Coming in upcoming editions:
@@ -94,21 +66,21 @@ choice = None # Sentry variable
 while choice != "0":
     print(
     """
-    High Scores
+    HighScor
     v1.1.2
 
     Main Menu
     0 - Quit
     1 - Add a game""")
-    
+
     if len(games) > 0:
         # Best not to let the user access the games' files until
         # they've created some!
         print("    2 - Choose a game to manage")
         print("    3 - See all scores for a player")
-        
+
     choice = input("Choice: ")# Get the user's choice
-    
+
     if choice == "0":
         print("Goodbye.")# After this, the while loop will break, and
                          # the program will end.
@@ -127,32 +99,32 @@ issues:\n    - Didn't enter anything\n    - Name already taken")
     elif choice == "2" and len(games) > 0: # See line 52
         print(
         """
-    High Scores
+    HighScor
     v1.1.2
 
     Manage games and scores
 
     List of games
     """)
-        
+
         for game in games:
             print("    -", game)# Show them all avaiable games by
                                 # looping through the dictionary
-            
+
         choose_game = input("Enter the name of a game \
 to access that game: ")# Get user input
         while choose_game.lower() not in games:
             print("That game is not avaliable.")
             choose_game = input("Enter the name of a game \
 to access that game: ")# Make sure that it's actually a saved game
-            
+
         scores = games[choose_game] # Create local var for easy access
-        
+
         choice = None
         while choice != "quit":
             print(
     """
-    High Scores
+    HighScor
     v1.1.2
     """)
             print("   ", choose_game.title(), "Menu")
@@ -177,21 +149,21 @@ to access that game: ")# Make sure that it's actually a saved game
             elif choice == "2":
                 score = input("What did the player get? ")# Get user
                                                           # input
-                
+
                 while score == "" or not score.isdigit():
                     print("That is an invalid score.\n\
 Possible issues:\n    - Didn't enter anything\n    - \
 Wasn't a number")
                     score = input("What did the player get? ")
 
-                
+
                 name = input("Who scored this score? ") # Get user
                                                         # input
                 while name == "":
                     print("That is an invalid name for a player.\n\
 Possible issues:\n    - Didn't enter anything")
                     name = input("Who scored this score? ")
-                    
+
                 done = False # Sentry variable
                 for entry in scores:
                     if entry[1].lower() == name.lower():
@@ -242,7 +214,7 @@ first to delete it.")
                     name = input("Whose score would you like to \
 update? ")
                     score = input("What is their new score? ")
-                    
+
                     while score == "" or not score.isdigit():
                         print("That is an invalid score.\n\
 Possible issues:\n    - Didn't enter anything\n    - \
@@ -314,21 +286,13 @@ view? ")
                 choose_player = input("Which player would you like to \
 view? ")
             choose_player = choose_player.lower()
-            list_player_scores(choose_player)                
+            list_player_scores(choose_player)
         input("Press enter to continue.")
     else: # Back in the main menu, some unkown choice
         print("That is not a choice.")
         input("Press enter to continue.")
-        
-    
+
+
 
 
 input("\n\n Press enter to exit")
-
-
-
-
-
-
-
-    

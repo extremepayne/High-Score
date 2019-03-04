@@ -10,7 +10,7 @@ The program works by shelving files with the highscores in them and retrieving t
 You need [python 3.x downloaded on your computer](https://www.python.org/downloads/). Clone the project. If necessary, unzip it. Yep, that's it!
 
 ## Usage
-Run the file marked `highscore1.3.py` however you [run python files](https://docs.python.org/3/faq/windows.html#id2). 
+Run the file marked `highscor1.3.py` however you [run python files](https://docs.python.org/3/faq/windows.html#id2).
 #### Running python files
 The link provided is some docs on how to use the command line in windows to execute a script; there are several other options:
 * Right-click the file, open with IDLE (comes pre-loaded with python) and press F5
@@ -32,7 +32,7 @@ Selection from a list/dictionary menus:
     List of games
     - 2048
     - t-rex game
-Enter the name of a game to access that game: 
+Enter the name of a game to access that game:
 ```
 You have to enter one of the items on the list in order to access it. Entering anything but an item on the list will result in the program telling you it's not a valid option.  They might be case-sensitive (still working on that).
 
@@ -46,13 +46,13 @@ Enter-to-continue prompts:
 ```
 Press enter to continue.
 ```
-Just press enter to continue. These often occur right after printing output, to give you some time to look at the ouput before proceeding back to a menu.
+Just press enter to continue. These often occur right after printing output, to give you some time to look at the output before proceeding back to a menu.
 
 And that's all you need to know to navigate the program! If you're still confused, you can check out the wiki on this repo's [Github page](https://github.com/extremepayne/High-Score).
 
 ## Versioning explanation
-The project was originally programmed without git, so the opening comments still have some of the version history.
-Also, version 2.0 was stopped in development and contains no changes to the code. The file marked v1.3 has the current version.
+The project was originally programmed without git, so the file marked `old_version_history` still has some of the version history.
+The file marked v1.3 has the current version (v1.3.3).
 
 ## License
 Just a standard MIT license. Check `LICENSE.md` for more info.
