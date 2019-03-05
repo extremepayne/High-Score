@@ -57,6 +57,9 @@ def list_scores(scores):
     print() # Whitespace in display.
 
 def list_players():
+    """
+    Prints all players from all games.
+    """
     rep = []
     for game in games: # For each game
         for entry in games[game]: # For each score
@@ -70,6 +73,9 @@ def list_players():
         print("No scores have been added.")
 
 def get_players():
+    """
+    Returns a list of all players from all games.
+    """
     rep = []
     for game in games: # For each game
         for entry in games[game]: # For each score
@@ -79,6 +85,9 @@ def get_players():
     return rep
 
 def list_player_scores(player):
+    """
+    Prints all scores from all games for one player.
+    """
     rep = []
     for game in games: # For each game
         for entry in games[game]: # For each score
@@ -92,6 +101,9 @@ def list_player_scores(player):
     print()
 
 def save_and_exit():
+    """
+    Writes local variables back to the shelved files,then closes the window.
+    """
     for game in games:
         games_file[game] = games[game]
     for setting in settings:
@@ -107,6 +119,9 @@ def save_and_exit():
 
 
 def ask_yes_no(question):
+    """
+    Asks the user a yes or no question, returns a boolean variable.
+    """
     output = input(question)
     while output not in ("y", "n", "quit"):
         print("That is not \"y\" or \"n\"")
@@ -129,7 +144,7 @@ print("Welcome to HighScor v1.3.3!\nEnter \"quit\" at any prompt to save and exi
 choice = None # Sentry variable
 while choice != "0":
     print(
-    """
+        """
     HighScor
     v1.3.3
 
@@ -147,7 +162,7 @@ while choice != "0":
 
     choice = input("Choice: ")# Get the user's choice
 
-    if choice == "0" or choice == "quit":
+    if choice in ("0", "quit"):
         save_and_exit()
         #----------
     elif choice == "1":
@@ -155,7 +170,8 @@ while choice != "0":
         while new_game == "" or new_game == "quit" or new_game in games:
             if new_game == "quit":
                 save_and_exit()
-            print("That is an invalid name for a game.\nPossible issues:\n    - Didn't enter anything\n    - Name already taken")
+            print("That is an invalid name for a game.\nPossible issues:\n    -\
+ Didn't enter anything\n    - Name already taken")
             new_game = input("What is the name of this game? ")
         games[new_game.lower()] = []
         settings[new_game.lower()] = [5, True]
@@ -164,7 +180,7 @@ while choice != "0":
         #----------
     elif choice == "2" and len(games) > 0: # See line 233
         print(
-        """
+            """
     HighScor
     v1.3.3
 
@@ -182,7 +198,8 @@ while choice != "0":
             if choose_game == "quit":
                 save_and_exit()
             print("That game is not avaliable.")
-            choose_game = input("Enter the name of a game to access that game: ")# Make sure that it's actually a saved game
+            choose_game = input("Enter the name of a game to access that game: ")
+            # Make sure that it's actually a saved game
 
         scores = games[choose_game] # Create local var for easy access
 
@@ -347,7 +364,7 @@ Wasn't a number")
                 input("Press enter to continue.")
                 #----------
             elif choice == "5":
-                sure = ask_yes_no("Are you sure?")
+                sure = ask_yes_no("Are you sure? (y/n)")
                 if sure:
                     choice = "back0"
                     del games[choose_game]
