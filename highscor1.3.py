@@ -16,17 +16,17 @@ import shelve
 
 try:
     games_file = shelve.open("scores.dat")
-except IOError as e:
+except IOError as error:
     print("Unable to open the file \"scores.dat\" Ending program.\
-\n", e)
+\n", error)
     input("\n\nPress the enter key to exit.")
     quit()
 
 try:
     settings_file = shelve.open("highscorsettings.dat")
-except IOError as e:
+except IOError as error:
     print("Unable to open the file \"highscorsettings.dat\" Ending program.\
-\n", e)
+\n", error)
     input("\n\nPress the enter key to exit.")
     quit()
 #^Get files
@@ -44,10 +44,13 @@ for setting in settings_file:
 
 
 def list_scores(scores):
+    """
+    Lists all scores from a game
+    """
     if len(scores) > 0: # If there are scores,
         print("\nScore\tName") # (Heading)
         for entry in scores:
-            print(entry[0], "\t", entry[1], sep = "")
+            print(entry[0], "\t", entry[1], sep="")
             # Print all the scores
     else: # Otherwise, inform the user.
         print("No scores have been added.")
@@ -112,7 +115,7 @@ def ask_yes_no(question):
         rep = True
     elif output == "n":
         rep = False
-    elif ouput == "quit":
+    elif output == "quit":
         save_and_exit()
     else: # Just in case
         rep = None
@@ -409,7 +412,7 @@ have to be numbers? (y/n) ")
                 print("That is not a choice.")
                 input("Press enter to continue.")
             #END of game editing
-    elif choice == "3" and len(games)>0: # Player score listing feature
+    elif choice == "3" and len(games) > 0: # Player score listing feature
         print("Listing players.")
         players = get_players() # gets a list of the player's names
         list_players() # Printing out the list of all the players
