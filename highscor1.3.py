@@ -207,7 +207,7 @@ while choice != "0":
         choice = None
         while choice != "back0":
             print(
-    """
+                """
     HighScor
     v1.3.3
     """)
@@ -240,18 +240,19 @@ while choice != "0":
                                                           # input
 
                 while score == "" or score == "quit" or ((not score.isdigit()) and
-                                      settings[choose_game][1] == True):
+                                      settings[choose_game][1]):
                     if score == "quit":
                         games[choose_game] = scores # Save scores to main
                                                     # dictionary
                         save_and_exit()
-                    print("That is an invalid score.\nPossible issues:\n    - Didn't enter anything\n    - Wasn't a number")
+                    print("That is an invalid score.\nPossible issues:\n    \
+                    - Didn't enter anything\n    - Wasn't a number")
                     score = input("What did the player get? ")
 
 
                 name = input("Who scored this score? ") # Get user
                                                         # input
-                while name == "" or name == "quit":
+                while name in ("", "quit"):
                     if name == "quit":
                         games[choose_game] = scores # Save scores to main
                                                     # dictionary
@@ -267,7 +268,8 @@ Possible issues:\n    - Didn't enter anything")
                         break
                 # ^Find out if player already has a score
                 if done: # And if he does, inform the user.
-                    print(name.title(), "already has a score saved for this game. \nYou can update his score with option 4.")
+                    print(name.title(), "already has a score saved for this \
+                    game. \nYou can update his score with option 4.")
                 else: # Otherwise, we save the score.
                     entry = (score, name)
                     scores.append(entry)
@@ -329,7 +331,7 @@ Possible issues:\n    - Didn't enter anything")
                     score = input("What is their new score? ")
 
                     while score == "" or score == "quit" or ((not score.isdigit()) and
-                                           settings[choose_game][1] == True):
+                                           settings[choose_game][1]):
                         if score == "quit":
                             games[choose_game] = scores # Save scores to main
                                                         # dictionary
@@ -351,8 +353,8 @@ Wasn't a number")
                             done = True
                             break # and quit looping through the
                                   # entries.
-                        i+=1 # Update counter
-                    scores.sort(reverse = True)
+                        i += 1 # Update counter
+                    scores.sort(reverse=True)
                     scores = scores[:settings[choose_game][0]]
                     # Sort and truncate the scores.
                     if done:
