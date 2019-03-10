@@ -7,6 +7,10 @@
 #Last updated 12/11/17
 #A progam to keep track of highscores
 
+# pylint: disable=C0103
+# pylint: disable=C1801
+# ^If you're using pylint, those two are espically annoying in the context of this prorgam.
+
 #---------------------------------------------------------------------
 
 
