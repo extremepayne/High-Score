@@ -1,16 +1,16 @@
-#HighScor program v1.3.3
-#Idea & orignal code - Micheal Dawson. As shown in
-#Python Programming for the Complete Beginner
-#under name "High Scores 2.0"
-#Modifications by Harrison Payne
-#Commenced 11/6/17
-#Last updated 12/11/17
-#A progam to keep track of highscores
+# HighScor program v1.3.3
+# Idea & orignal code - Micheal Dawson. As shown in
+# Python Programming for the Complete Beginner
+# under name "High Scores 2.0"
+# Modifications by Harrison Payne
+# Commenced 11/6/17
+# Last updated 12/11/17
+# A progam to keep track of highscores
 
-#---------------------------------------------------------------------
+# ---------------------------------------------------------------------
 
 
-#Code
+# Code
 
 import shelve
 
@@ -29,7 +29,7 @@ except IOError as error:
 \n", error)
     input("\n\nPress the enter key to exit.")
     quit()
-#^Get files
+# ^Get files
 
 
 games = {}
@@ -40,7 +40,7 @@ for game in games_file:
 settings = {}
 for setting in settings_file:
     settings[setting] = settings_file[setting]
-#^Create vars
+# ^Create vars
 
 
 def list_scores(scores):
@@ -164,20 +164,22 @@ while choice != "0":
 
     if choice in ("0", "quit"):
         save_and_exit()
-        #----------
+        # ----------
     elif choice == "1":
         new_game = input("What is the name of this game? ")
+        new_game = new_game.lower()
         while new_game == "" or new_game == "quit" or new_game in games:
             if new_game == "quit":
                 save_and_exit()
             print("That is an invalid name for a game.\nPossible issues:\n    -\
  Didn't enter anything\n    - Name already taken")
             new_game = input("What is the name of this game? ")
-        games[new_game.lower()] = []
-        settings[new_game.lower()] = [5, True]
+            new_game = new_game.lower()
+        games[new_game] = []
+        settings[new_game] = [5, True]
         input("Press enter to continue.")
         print("Returning to main menu.")
-        #----------
+        # ----------
     elif choice == "2" and len(games) > 0: # See line 233
         print(
             """
@@ -230,11 +232,11 @@ while choice != "0":
                 games[choose_game] = scores # Save scores to main
                                             # dictionary
                 save_and_exit()
-                #----------
+                # ----------
             elif choice == "1":
                 list_scores(scores)
                 input("Press enter to continue.")
-                #----------
+                # ----------
             elif choice == "2":
                 score = input("What did the player get? ")# Get user
                                                           # input
@@ -283,7 +285,7 @@ Possible issues:\n    - Didn't enter anything")
                     print("Score has been added.")
                     # Inform the user.
                 input("Press enter to continue.")
-                #----------
+                # ----------
             elif choice == "3":
                 if len(scores) > 0: # If there are any scores
                     print("Listing scores:")
@@ -308,7 +310,7 @@ Possible issues:\n    - Didn't enter anything")
                 else: # If there aren't any scores:
                     print("No scores have been added. Add a score first to delete it.")
                 input("Press enter to continue.")
-                #----------
+                # ----------
             elif choice == "4":
                 if len(scores) > 0: # If there are scores:
                     print("Listing scores:")
@@ -364,7 +366,7 @@ Wasn't a number")
                 else: # If there aren't any scores:
                     print("No scores have been added. Add a score first to update it.")
                 input("Press enter to continue.")
-                #----------
+                # ----------
             elif choice == "5":
                 sure = ask_yes_no("Are you sure? (y/n)")
                 if sure:
@@ -373,7 +375,7 @@ Wasn't a number")
                     del settings[choose_game]
                     print("Game has been deleted.")
                     input("Press enter to continue.")
-                #----------
+                # ----------
             elif choice == "6":
                 choice = None
                 while choice != "back1":
@@ -426,11 +428,11 @@ have to be numbers? (y/n) ")
                         print("That is not a choice.")
                         input("Press enter to continue.")
                 input("Press enter to return to the game menu.")
-                #----------
+                # ----------
             else: # Some unkown choice
                 print("That is not a choice.")
                 input("Press enter to continue.")
-            #END of game editing
+            # END of game editing
     elif choice == "3" and len(games) > 0: # Player score listing feature
         print("Listing players.")
         players = get_players() # gets a list of the player's names
