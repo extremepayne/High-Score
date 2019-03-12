@@ -97,16 +97,33 @@ def write_score(game_name, player_name, score):
     """
     games_file, settings_file = load_files()
     game_name = game_name.lower()
+    player_name = player_name.lower()
     if game_name in ("", "quit") or game_name in games_file:  # If the game is named "quit", this
                                                               # creates problems elsewhere.
         return "fail"
-    if score == "" or score == "quit" or ((not score.isdigit()) and
-                                          settings_file[game_name][1]):
-        return "fail"
-    if score in ("", "quit"):
+    if score in ("", "quit") or ((not score.isdigit()) and
+                                 settings_file[game_name][1]):
         return "fail"
     if player_name in ("", "quit"):
         return "fail"
+    scores = games_file[game_name]
+    done = False
+    for entry in scores:
+        if entry[1].lower() == player_name:
+            done = True
+            break
+    if done:
+        return "fail"
+    # At this point, there aren't any possible errors left.
+    entry = (score, player_name)
+    scores.append(entry)
+    # Add the score.
+    scores.sort(reverse=True)
+    scores = scores[:settings_file[game_name][0]]# Each
+                            # setting is a tuple,
+                            # first element is the
+                            # value we're after.
+    # Sort and truncate the scores.
     save_files(games_file, settings_file)
     return "success"
 
