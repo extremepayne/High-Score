@@ -143,6 +143,23 @@ def update_score(game_name, player_name, score):
     if player_name in ("", "quit"):
         return "fail"
     scores = games_file[game_name]
+    new_entry = (score, player_name)
+    done = False
+    i = 0
+    for entry in scores:
+        if entry[1].lower() == player_name:
+            scores[i] = new_entry
+            done = True
+            break
+    if  not done:  # Since were updating, we will throw an error if the player doesn't exist.
+        return "fail"
+    # At this point there aren't any possible errors left.
+    scores.sort(reverse=True)
+    scores = scores[:settings_file[game_name][0]]# Each
+                            # setting is a tuple,
+                            # first element is the
+                            # value we're after.
+    # Sort and truncate the scores.
     save_files(games_file, settings_file)
     return "success"
 
