@@ -25,13 +25,11 @@ def __save_files(games, settings):
     \n", error)
         input("\n\nPress the enter key to exit.")
         quit()
-    #^Get files
-
+    # ^Get files
 
     games = {}
     for game in games_file:
         games[game] = games_file[game]
-
 
     settings = {}
     for setting in settings_file:
@@ -44,6 +42,7 @@ def __save_files(games, settings):
     games_file.close()
     settings_file.sync()
     settings_file.close()
+
 
 def __load_files():
     """Return two dictionaries that have the score files in them."""
@@ -62,13 +61,11 @@ def __load_files():
     \n", error)
         input("\n\nPress the enter key to exit.")
         quit()
-    #^Get files
-
+    # ^Get files
 
     games = {}
     for game in games_file:
         games[game] = games_file[game]
-
 
     settings = {}
     for setting in settings_file:
@@ -76,12 +73,13 @@ def __load_files():
 
     return games, settings
 
+
 def create_game_file(game_name, setting0, setting1):
     """Create a file for a game to use."""
     games_file, settings_file = __load_files()
     game_name = game_name.lower()
-    if game_name in ("", "quit") or game_name in games_file:  # If the game is named "quit", this
-                                                              # creates problems elsewhere.
+    if game_name in ("", "quit") or game_name in games_file:  # If the game is
+                            # named "quit", this creates problems elsewhere.
         return "fail"
     games_file[game_name.lower()] = []
     settings_file[game_name.lower()] = [setting0, setting1]
@@ -98,8 +96,8 @@ def write_score(game_name, player_name, score):
     games_file, settings_file = __load_files()
     game_name = game_name.lower()
     player_name = player_name.lower()
-    if game_name in ("", "quit") or game_name in games_file:  # If the game is named "quit", this
-                                                              # creates problems elsewhere.
+    if game_name in ("", "quit") or game_name in games_file:  # If the game is
+                            # named "quit", this creates problems elsewhere.
         return "fail"
     if score in ("", "quit") or ((not score.isdigit()) and
                                  settings_file[game_name][1]):
@@ -119,10 +117,9 @@ def write_score(game_name, player_name, score):
     scores.append(entry)
     # Add the score.
     scores.sort(reverse=True)
-    scores = scores[:settings_file[game_name][0]]# Each
+    scores = scores[:settings_file[game_name][0]]  # Each
                             # setting is a tuple,
-                            # first element is the
-                            # value we're after.
+                            # the first element is the value we're after.
     # Sort and truncate the scores.
     __save_files(games_file, settings_file)
     return "success"
@@ -136,8 +133,8 @@ def update_score(game_name, player_name, score):
     games_file, settings_file = __load_files()
     game_name = game_name.lower()
     player_name = player_name.lower()
-    if game_name in ("", "quit") or game_name in games_file:  # If the game is named "quit", this
-                                                              # creates problems elsewhere.
+    if game_name in ("", "quit") or game_name in games_file:  # If the game is
+                            # named "quit", this creates problems elsewhere.
         return "fail"
     if score in ("", "quit") or ((not score.isdigit()) and
                                  settings_file[game_name][1]):
@@ -153,28 +150,20 @@ def update_score(game_name, player_name, score):
             scores[i] = new_entry
             done = True
             break
-    if  not done:  # Since were updating, we will throw an error if the player doesn't exist.
+    if not done:  # Since were updating, we will throw an error if the player
+                # doesn't exist.
         return "fail"
     # At this point there aren't any possible errors left.
     scores.sort(reverse=True)
-    scores = scores[:settings_file[game_name][0]]# Each
+    scores = scores[:settings_file[game_name][0]]  # Each
                             # setting is a tuple,
-                            # first element is the
-                            # value we're after.
+                            # the first element is the value we're after.
     # Sort and truncate the scores.
     __save_files(games_file, settings_file)
     return "success"
 
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
-    print("This file was meant to be accessed as a module, not run on its own.")
+    print("This file was meant to be accessed as a module, \
+not run on its own.")
     input("\n\nPress enter to exit.")
     quit()
