@@ -1,11 +1,15 @@
-"""Module that allows games to save to the file used by highscor."""
+"""Module that allows games to save to the file used by highscor.
+
+Functions:
+create_game_file
+write_score
+update_score
+"""
 import shelve
 
 
-def save_files(games, settings):
-    """
-    Writes local variables back to the shelved files, then closes the window.
-    """
+def __save_files(games, settings):
+    """Write local variables back to the shelved files."""
     try:
         games_file = shelve.open("scores.dat")
     except IOError as error:
@@ -41,11 +45,8 @@ def save_files(games, settings):
     settings_file.sync()
     settings_file.close()
 
-def load_files():
-    """
-    Returns two files that have the scores in them.
-    """
-
+def __load_files():
+    """Return two dictionaries that have the score files in them."""
     try:
         games_file = shelve.open("scores.dat")
     except IOError as error:
@@ -76,26 +77,25 @@ def load_files():
     return games, settings
 
 def create_game_file(game_name, setting0, setting1):
-    """
-    Creates a file for a game to use.
-    """
-    games_file, settings_file = load_files()
+    """Create a file for a game to use."""
+    games_file, settings_file = __load_files()
     game_name = game_name.lower()
     if game_name in ("", "quit") or game_name in games_file:  # If the game is named "quit", this
                                                               # creates problems elsewhere.
         return "fail"
     games_file[game_name.lower()] = []
     settings_file[game_name.lower()] = [setting0, setting1]
-    save_files(games_file, settings_file)
+    __save_files(games_file, settings_file)
     return "success"
 
 
 def write_score(game_name, player_name, score):
     """
-    Writes a score to a game file. If player already has a score or game does
-    not exist, return "fail".
+    Write a score to a game file.
+
+    If player already has a score or game does not exist, return "fail".
     """
-    games_file, settings_file = load_files()
+    games_file, settings_file = __load_files()
     game_name = game_name.lower()
     player_name = player_name.lower()
     if game_name in ("", "quit") or game_name in games_file:  # If the game is named "quit", this
@@ -124,14 +124,16 @@ def write_score(game_name, player_name, score):
                             # first element is the
                             # value we're after.
     # Sort and truncate the scores.
-    save_files(games_file, settings_file)
+    __save_files(games_file, settings_file)
     return "success"
 
 def update_score(game_name, player_name, score):
     """
-    Changes a player's score in a game file. If player or game doesn't exist, return "fail".
+    Change a player's score in a game file.
+
+    If player or game doesn't exist, return "fail".
     """
-    games_file, settings_file = load_files()
+    games_file, settings_file = __load_files()
     game_name = game_name.lower()
     player_name = player_name.lower()
     if game_name in ("", "quit") or game_name in games_file:  # If the game is named "quit", this
@@ -160,7 +162,7 @@ def update_score(game_name, player_name, score):
                             # first element is the
                             # value we're after.
     # Sort and truncate the scores.
-    save_files(games_file, settings_file)
+    __save_files(games_file, settings_file)
     return "success"
 
 

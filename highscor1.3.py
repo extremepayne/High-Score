@@ -1,3 +1,4 @@
+"""Save highscores to file via a command line interface."""
 # HighScor program v1.3.3
 # Idea & orignal code - Micheal Dawson. As shown in
 # Python Programming for the Complete Beginner
@@ -50,9 +51,7 @@ for setting in settings_file:
 
 
 def list_scores(scores):
-    """
-    Lists all scores from a game
-    """
+    """List all scores from a game."""
     if len(scores) > 0:  # If there are scores,
         print("\nScore\tName")  # (Heading)
         for entry in scores:
@@ -63,9 +62,7 @@ def list_scores(scores):
     print()  # Whitespace in display.
 
 def list_players():
-    """
-    Prints all players from all games.
-    """
+    """Print all players from all games."""
     rep = []
     for game in games:  # For each game
         for entry in games[game]:  # For each score
@@ -79,9 +76,7 @@ def list_players():
         print("No scores have been added.")
 
 def get_players():
-    """
-    Returns a list of all players from all games.
-    """
+    """Return a list of all players from all games."""
     rep = []
     for game in games:  # For each game
         for entry in games[game]:  # For each score
@@ -91,9 +86,7 @@ def get_players():
     return rep
 
 def list_player_scores(player):
-    """
-    Prints all scores from all games for one player.
-    """
+    """Print all scores from all games for one player."""
     rep = []
     for game in games:  # For each game
         for entry in games[game]:  # For each score
@@ -107,9 +100,7 @@ def list_player_scores(player):
     print()
 
 def save_and_exit():
-    """
-    Writes local variables back to the shelved files,then closes the window.
-    """
+    """Write local variables back to the shelved files,then closes the window."""
     for game in games:
         games_file[game] = games[game]
     for setting in settings:
@@ -125,9 +116,7 @@ def save_and_exit():
 
 
 def ask_yes_no(question):
-    """
-    Asks the user a yes or no question, returns a boolean variable.
-    """
+    """Ask the user a yes or no question, return a boolean variable."""
     output = input(question)
     while output not in ("y", "n", "quit"):
         print("That is not \"y\" or \"n\"")
