@@ -1,14 +1,24 @@
 # High-Score
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: pep 0257](https://img.shields.io/badge/code%20style-pep257-orange.svg)](https://www.python.org/dev/peps/pep-0257/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 Programs that save high scores to a file.
-
-This program was created originally as a response to the fact that the games on my calculator didn't have a good way to save highscores, and the eventual hope is that it will be able to have games write highscores to it (while still allowing manual addition of scores).
 
 The basic idea is that you add games, scores, and associate those scores with players. Additional functionality has also been added, including settings, viewing scores by player as well as by game, and so forth.
 The program works by shelving files with the highscores in them and retrieving them when necessary (actually only once at the start of the program; they're re-shelved only when the user chooses "save and quit").
 
-## Installation
+## Table of contents
+- [Background](#background)
+- [Install](#install)
+- [Usage](#usage)
+- [Versioning explanation](#versioning explanation)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Background
+This program was created originally as a response to the fact that the games on my calculator didn't have a good way to save highscores, and the eventual hope is that it will be able to have games write highscores to it (while still allowing manual addition of scores).
+
+
+## Install
 You need [python 3.x downloaded on your computer](https://www.python.org/downloads/). Clone the project. If necessary, unzip it. Yep, that's it!
 
 ## Usage
@@ -57,8 +67,10 @@ And that's all you need to know to navigate the program! If you're still confuse
 The project was originally programmed without git, so the file marked `old_version_history` still has some of the version history.
 The file marked v1.3 has the current version (v1.3.3).
 
-## License
-Just [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT). Check `LICENSE.md` for more info.
-
-## Contributions
+## Contributing
 More than welcome! Please create issues/PRs for anything you think should be included that isn't. (Or bug/typo fixes, etc.)
+
+Note: This repo conforms to the following styleguides; please comply: [standard-readme](https://github.com/RichardLitt/standard-readme) and [pep 257](https://www.python.org/dev/peps/pep-0257/).
+
+## License
+MIT License © Harrison Payne. Check `LICENSE.md` for more info.
