@@ -1,7 +1,7 @@
 # High-Score
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: pep 0257](https://img.shields.io/badge/code%20style-pep257-orange.svg)](https://www.python.org/dev/peps/pep-0257/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-Programs that save high scores to a file.
+> Programs that save high scores to a file.
 
 The basic idea is that you add games, scores, and associate those scores with players. Additional functionality has also been added, including settings, viewing scores by player as well as by game, and so forth.
 The program works by shelving files with the highscores in them and retrieving them when necessary (actually only once at the start of the program; they're re-shelved only when the user chooses "save and quit").
@@ -29,7 +29,7 @@ If you're not familiar with python and don't know how to run a file, there are s
 * Right-click the file, open with IDLE (comes pre-loaded with python) and press F5
 * Download [atom](https://www.atom.io) and the [run-python-simply package](https://atom.io/packages/run-python-simply), open the file (or clone the repo) with atom, and press F5 (python must be in PATH) (I don't recommend this method unless you already understand how programming works)
 
-#### Using the program
+#### CLI
 Alright, you're ready to save some scores! The program uses a command-line like interface, but never fear, there's no need to memorize any commands. Everything you need to know will be on a menu right before the prompt. There are a few types of prompts:
 Regular menus:
 ```
@@ -73,4 +73,4 @@ More than welcome! Please create issues/PRs for anything you think should be inc
 Note: This repo conforms to the following styleguides; please comply: [standard-readme](https://github.com/RichardLitt/standard-readme) and [pep 257](https://www.python.org/dev/peps/pep-0257/).
 
 ## License
-MIT License © Harrison Payne. Check `LICENSE.md` for more info.
+MIT License © Harrison Payne. SEE LICENSE IN `LICENSE.md`
