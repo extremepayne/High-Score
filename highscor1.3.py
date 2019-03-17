@@ -11,11 +11,9 @@
 
 # pylint: disable=C0103
 # pylint: disable=C1801
-# ^If you're using pylint, those two are espically annoying in the context of this prorgam.
+# ^If you're using pylint, those two are espically annoying.
 
 # ---------------------------------------------------------------------
-
-
 
 # Code
 
@@ -56,10 +54,11 @@ def list_scores(scores):
         print("\nScore\tName")  # (Heading)
         for entry in scores:
             print(entry[0], "\t", entry[1], sep="")
-            #  Print all the scores
-    else:  #  Otherwise, inform the user.
+            # Print all the scores
+    else:  # Otherwise, inform the user.
         print("No scores have been added.")
     print()  # Whitespace in display.
+
 
 def list_players():
     """Print all players from all games."""
@@ -67,7 +66,7 @@ def list_players():
     for game in games:  # For each game
         for entry in games[game]:  # For each score
             if entry[1] not in rep:  # If the player's name isn't
-                                     # already in there, add it.
+                                    # already in there, add it.
                 rep.append(entry[1])
     if len(rep) > 0:
         for player in rep:
@@ -75,15 +74,17 @@ def list_players():
     else:
         print("No scores have been added.")
 
+
 def get_players():
     """Return a list of all players from all games."""
     rep = []
     for game in games:  # For each game
         for entry in games[game]:  # For each score
             if entry[1].lower() not in rep:  # If the player's name
-                                     # isn't already in there, add it.
+                                            # isn't already in there, add it.
                 rep.append(entry[1].lower())
     return rep
+
 
 def list_player_scores(player):
     """Print all scores from all games for one player."""
@@ -95,12 +96,13 @@ def list_player_scores(player):
                 rep.append(new_entry)
     print("\nScore\tGame")  # (Heading)
     for entry in rep:
-        print(entry[0], "\t", entry[1].title(), sep = "")
+        print(entry[0], "\t", entry[1].title(), sep="")
         # Print all the scores
     print()
 
+
 def save_and_exit():
-    """Write local variables back to the shelved files,then closes the window."""
+    """Write local variables to the shelved files, then close the window."""
     for game in games:
         games_file[game] = games[game]
     for setting in settings:
@@ -133,7 +135,8 @@ def ask_yes_no(question):
 
 # -----MAIN-----
 
-print("Welcome to HighScor v1.3.3!\nEnter \"quit\" at any prompt to save and exit.")
+print("Welcome to HighScor v1.3.3!\nEnter \"quit\" at any prompt \
+to save and exit.")
 
 
 choice = None  # Sentry variable
@@ -188,18 +191,19 @@ while choice != "0":
 
         for game in games:
             print("    -", game)  # Show them all avaiable games by
-                                  # looping through the dictionary
+                                # looping through the dictionary
 
-        choose_game = input("Enter the name of a game to access that game: ")  # Get user input
+        choose_game = input("Enter the name of a game to access that game: ")
+        # Get user input
         while choose_game.lower() not in games:
             if choose_game == "quit":
                 save_and_exit()
             print("That game is not avaliable.")
-            choose_game = input("Enter the name of a game to access that game: ")
+            choose_game = input("Enter the name of a game to access \
+            that game: ")
             # Make sure that it's actually a saved game
 
         scores = games[choose_game]  # Create local var for easy access
-
 
         choice = None
         while choice != "back0":
@@ -221,11 +225,11 @@ while choice != "0":
             if choice == "0":
                 choice = "back0"  # Break the while loop
                 games[choose_game] = scores  # Save scores to main
-                                             # dictionary
+                                            # dictionary
                 # ----------
             elif choice == "quit":
                 games[choose_game] = scores  # Save scores to main
-                                             # dictionary
+                                        # dictionary
                 save_and_exit()
                 # ----------
             elif choice == "1":
@@ -236,23 +240,23 @@ while choice != "0":
                 score = input("What did the player get? ")  # Get user
                                                             # input
 
-                while score == "" or score == "quit" or ((not score.isdigit()) and
-                                      settings[choose_game][1]):
+                while (score == "" or score == "quit" or
+                       ((not score.isdigit()) and
+                        settings[choose_game][1])):
                     if score == "quit":
                         games[choose_game] = scores  # Save scores to main
-                                                     # dictionary
+                                                    # dictionary
                         save_and_exit()
                     print("That is an invalid score.\nPossible issues:\n    \
                     - Didn't enter anything\n    - Wasn't a number")
                     score = input("What did the player get? ")
 
-
                 name = input("Who scored this score? ")  # Get user
-                                                         # input
+                                                        # input
                 while name in ("", "quit"):
                     if name == "quit":
                         games[choose_game] = scores  # Save scores to main
-                                                     # dictionary
+                                                    # dictionary
                         save_and_exit()
                     print("That is an invalid name for a player.\n\
 Possible issues:\n    - Didn't enter anything")
