@@ -1,5 +1,5 @@
 # High-Score
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: pep 0257](https://img.shields.io/badge/code%20style-pep257-orange.svg)](https://www.python.org/dev/peps/pep-0257/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: pep 0257](https://img.shields.io/badge/code%20style-pep257-brightgreen.svg)](https://www.python.org/dev/peps/pep-0257/) [![Code style: pep 0008](https://img.shields.io/badge/code%20style-pep8-brightgreen.svg)](https://www.python.org/dev/peps/pep-0008/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 
 > Programs that save high scores to a file.
 
@@ -10,7 +10,7 @@ The program works by shelving files with the highscores in them and retrieving t
 - [Background](#background)
 - [Install](#install)
 - [Usage](#usage)
-- [Versioning explanation](#versioning explanation)
+- [Versioning explanation](#versioning)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -63,14 +63,14 @@ Just press enter to continue. These often occur right after printing output, to 
 
 And that's all you need to know to navigate the program! If you're still confused, you can check out the wiki on this repo's [Github page](https://github.com/extremepayne/HighScor).
 
-## Versioning explanation
+## Versioning
 The project was originally programmed without git, so the file marked `old_version_history` still has some of the version history.
 The file marked v1.3 has the current version (v1.3.3).
 
 ## Contributing
 More than welcome! Please create issues/PRs for anything you think should be included that isn't. (Or bug/typo fixes, etc.)
 
-Note: This repo conforms to the following styleguides; please comply: [standard-readme](https://github.com/RichardLitt/standard-readme) and [pep 257](https://www.python.org/dev/peps/pep-0257/).
+Note: This repo conforms to the following styleguides; please comply: [standard-readme](https://github.com/RichardLitt/standard-readme), [pep 257](https://www.python.org/dev/peps/pep-0257/) and [pep 8](https://www.python.org/dev/peps/pep-0008/).
 
 ## License
-MIT License © Harrison Payne. SEE LICENSE IN `LICENSE.md`
+MIT License © Harrison Payne. See license in `LICENSE.md`
