@@ -87,9 +87,9 @@ def create_game_file(game_name, setting0, setting1):
     return "success"
 
 
-def write_score(game_name, player_name, score):
+def new_score(game_name, player_name, score):
     """
-    Write a score to a game file.
+    Add a score for a player that doesn't have one.
 
     If player already has a score or game does not exist, return "fail".
     """
@@ -159,6 +159,41 @@ def update_score(game_name, player_name, score):
                             # setting is a tuple,
                             # the first element is the value we're after.
     # Sort and truncate the scores.
+    __save_files(games_file, settings_file)
+    return "success"
+
+
+def write_score(game_name, player_name, score):
+    """
+    Add or update a score.
+
+    If game doesn't exist, return fail.
+    """
+    games_file, settings_file = __load_files()
+    game_name = game_name.lower()
+    player_name = player_name.lower()
+    if game_name in ("", "quit") or game_name in games_file:  # If the game is
+                            # named "quit", this creates problems elsewhere.
+        return "fail"
+    if score in ("", "quit") or ((not score.isdigit()) and
+                                 settings_file[game_name][1]):
+        return "fail"
+    if player_name in ("", "quit"):
+        return "fail"
+    scores = games_file[game_name]
+    for entry in scores:
+        if entry[1].lower() == player_name:
+            entry[0] = score
+            scores.sort(reverse=True)
+            scores = scores[:settings_file[game_name][0]]
+            games_file[game_name] = scores
+            __save_files(games_file, settings_file)
+            return "success"
+    new_entry = (score, player_name)
+    scores.append(new_entry)
+    scores.sort(reverse=True)
+    scores = scores[:settings_file[game_name][0]]
+    games_file[game_name] = scores
     __save_files(games_file, settings_file)
     return "success"
 
