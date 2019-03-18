@@ -22,7 +22,9 @@ This program was created originally as a response to the fact that the games on 
 You need [python 3.x downloaded on your computer](https://www.python.org/downloads/). Clone the project. If necessary, unzip it. Yep, that's it!
 
 ## Usage
-Run the file marked `highscor1.3.py` however you run python files.
+The project has two interfaces, currently only the CLI is working (API under development.)
+
+Run the file marked `highscor_cmdline.py` however you run python files.
 #### Running python files
 If you're not familiar with python and don't know how to run a file, there are several options:
 * [Use the command line in windows to execute a script](https://docs.python.org/3/faq/windows.html#id2)
@@ -65,7 +67,7 @@ And that's all you need to know to navigate the program! If you're still confuse
 
 ## Versioning
 The project was originally programmed without git, so the file marked `old_version_history` still has some of the version history.
-The file marked v1.3 has the current version (v1.3.3).
+The file included here has the current version (v1.3.3).
 
 ## Contributing
 More than welcome! Please create issues/PRs for anything you think should be included that isn't. (Or bug/typo fixes, etc.)
