@@ -1,219 +1,205 @@
-#HighScor program v1.0.1
-#Idea & orignal code - Micheal Dawson. As shown in
-#Python Programming for the Complete Beginner
-#under name "High Scores 2.0"
-#Modifications by Harrison Payne
-#Commenced 11/6/17
-#Last updated 11/10/17
-#A progam to keep track of highscores
+"""Module that allows games to save to the file used by highscor.
 
-#Coming in upcoming editions:
-# View all scores attributed to a player (probably v1.2)
-# Save highscores to a off-program file (probably v1.1)
-# User-friendly GUI (probably v2.0)
+Functions:
+create_game_file
+write_score
+update_score
+"""
+import shelve
 
 
-games = {}
-list_lengths = {} # Create vars
+def __save_files(games, settings):
+    """Write local variables back to the shelved files."""
+    try:
+        games_file = shelve.open("scores.dat")
+    except IOError as error:
+        print("Unable to open the file \"scores.dat\" Ending program.\
+    \n", error)
+        input("\n\nPress the enter key to exit.")
+        quit()
 
-def list_scores(scores):
-    if len(scores) > 0: # If there are scores,
-        print("Score\tName") # (Heading)
-        for entry in scores:
-            print(entry[0], "\t", entry[1], sep = "")
-            # Print all the scores
-    else: # Otherwise, inform the user.
-        print("No scores have been added.")
+    try:
+        settings_file = shelve.open("highscorsettings.dat")
+    except IOError as error:
+        print("Unable to open the file \"highscorsettings.dat\" \
+        Ending program.    \n", error)
+        input("\n\nPress the enter key to exit.")
+        quit()
+    # ^Get files
+
+    games = {}
+    for game in games_file:
+        games[game] = games_file[game]
+
+    settings = {}
+    for setting in settings_file:
+        settings[setting] = settings_file[setting]
+    for game in games:
+        games_file[game] = games[game]
+    for setting in settings:
+        settings_file[setting] = settings[setting]
+    games_file.sync()
+    games_file.close()
+    settings_file.sync()
+    settings_file.close()
 
 
-choice = None # Sentry variable
-while choice != "0":
-    print(
+def __load_files():
+    """Return two dictionaries that have the score files in them."""
+    try:
+        games_file = shelve.open("scores.dat")
+    except IOError as error:
+        print("Unable to open the file \"scores.dat\" Ending program.\
+    \n", error)
+        input("\n\nPress the enter key to exit.")
+        quit()
+
+    try:
+        settings_file = shelve.open("highscorsettings.dat")
+    except IOError as error:
+        print("Unable to open the file \"highscorsettings.dat\" \
+        Ending program.    \n", error)
+        input("\n\nPress the enter key to exit.")
+        quit()
+    # ^Get files
+
+    games = {}
+    for game in games_file:
+        games[game] = games_file[game]
+
+    settings = {}
+    for setting in settings_file:
+        settings[setting] = settings_file[setting]
+
+    return games, settings
+
+
+def create_game_file(game_name, setting0, setting1):
+    """Create a file for a game to use."""
+    games_file, settings_file = __load_files()
+    game_name = game_name.lower()
+    if game_name in ("", "quit") or game_name in games_file:
+        # If the game is named "quit", this creates problems elsewhere.
+        return "fail"
+    games_file[game_name.lower()] = []
+    settings_file[game_name.lower()] = [setting0, setting1]
+    __save_files(games_file, settings_file)
+    return "success"
+
+
+def new_score(game_name, player_name, score):
     """
-    HighScor
-    v1.0.1
+    Add a score for a player that doesn't have one.
 
-    Main Menu
-    0 - Quit
-    1 - Add a game""")
-
-    if len(games) > 0:
-        # Best not to let the user access the games' files until
-        # they've created some!
-        print("    2 - Choose a game to manage")
-
-    choice = input("Choice: ")# Get the user's choice
-
-    if choice == "0":
-        print("Goodbye.")# After this, the whil loop will break, and
-                         # the program will end.
-        #----------
-    elif choice == "1":
-        new_game = input("What is the name of this game? ")
-        games[new_game.lower()] = []
-        list_lengths[new_game.lower()] = 5
-        input("Press enter to continue.")
-        print("Returning to main menu.")
-        #----------
-    elif choice == "2" and len(games) > 0: # See line 52
-        print(
-        """
-    HighScor
-    v1.0.1
-
-    Manage games and scores
-
-    List of games
-    """)
-
-        for game in games:
-            print("    -", game)# Show them all avaiable games by
-                                # looping through the dictionary
-
-        choose_game = input("Enter the name of a game \
-to access that game: ")# Get user input
-        while choose_game.lower() not in games:
-            print("That game is not avaliable.")
-            choose_game = input("Enter the name of a game \
-to access that game: ")# Make sure that it's actually a saved game
-
-        scores = games[choose_game] # Create local var for easy access
-
-        choice = None
-        while choice != "quit":
-            print(
+    If player already has a score or game does not exist, return "fail".
     """
-    HighScor
-    v1.0.1
-    """)
-            print("   ", choose_game.title(), "Menu")
-            print("""
-    0 - Return to main menu
-    1 - Display Scores
-    2 - Add a score
-    3 - Delete a score
-    4 - Update a score
-    5 - Delete this game
-    6 - Edit game settings""")
-            choice = input("Choose: ")
-            if choice == "0":
-                choice = "quit"
-                games[choose_game] = scores # Save scores to main
-                                            # dictionary
-                #----------
-            elif choice == "1":
-                list_scores(scores)
-                input("Press enter to continue.")
-                #----------
-            elif choice == "2":
-                score = input("What did the player get? ")
-                name = input("Who scored this score? ") # Get user
-                                                        # input
-                done = False # Sentry variable
-                for entry in scores:
-                    if entry[1].lower() == name.lower():
-                        done = True
-                        break
-                # ^Find out if player already has a score
-                if done: # And if he does, inform the user.
-                    print(name.title(), "already has a score saved \
-for this game. \nYou can update his score with option 4.")
-                else: # Otherwise, we save the score.
-                    entry = (score, name)
-                    scores.append(entry)
-                    # Add the score.
-                    scores.sort(reverse = True)
-                    scores = scores[:list_lengths[game]]
-                    # Sort and truncate the scores.
-                    print("Score has been added.")
-                    # Inform the user.
-                input("Press enter to continue.")
-                #----------
-            elif choice == "3":
-                if len(scores) > 0: # if there are any scores
-                    print("Listing scores:")
-                    list_scores(scores)
-                    name = input("Whose score would you like \
-to delete? ") # Get user input
-                    done = False
-                    for entry in scores:
-                        if entry[1].lower() == name.lower():
-                            scores.remove(entry)
-                            done = True
-                            break
-                    # ^ Attempt to delete score
-                    if done:
-                        print("Score removed.")
-                    else:
-                        print("Player not found.")
-                    # ^ Inform them of the results
-                else: # If there aren't any scores:
-                    print("No scores have been added. Add a score \
-first to delete it.")
-                input("Press enter to continue.")
-                #----------
-            elif choice == "4":
-                if len(scores) > 0: # If there are scores:
-                    print("Listing scores:")
-                    list_scores(scores)
-                    name = input("Whose score would you like to \
-update? ")
-                    score = input("What is their new score? ")
-                    new_entry = (score, name)
-                    done = False # Sentry variable
-                    i = 0 # Counter var
-                    for entry in scores: # for each score-name pair
-                        if entry[1].lower() == name.lower(): # Check
-                                    # if entry belongs to the player
-                            scores[i] = new_entry# and if so update
-                                                 # the score
-                            done = True
-                            break # and quit looping through the
-                                  # entries.
-                        i+=1 # Update counter
-                    scores.sort(reverse = True)
-                    scores = scores[:list_lengths[game]]
-                    # Sort and truncate the scores.
-                    if done:
-                        print("Score updated.")
-                    else:
-                        print("Player not found.")
-                else: # If there aren't any scores:
-                    print("No scores have been added. Add a score \
-first to update it.")
-                input("Press enter to continue.")
-                #----------
-            elif choice == "5":
-                choice = "quit"
-                del games[choose_game]
-                del list_lengths[choose_game]
-                print("Game has been deleted.")
-                input("Press enter to continue.")
-                #----------
-            elif choice == "6":
-                print("Edit Game Settings")
-                done = False # Sentry variable
-                while not done:
-                    try:
-                        setting = int(input("How many scores should \
-this game keep? "))
-                    except ValueError:
-                        print("That is not a number. Please try \
-again.")
-                    else:
-                        done = True
-                list_lengths[choose_game] = setting
-                scores = scores[:list_lengths[game]]
-                input("Press enter to continue.")
-                #----------
-            else: # Some unkown choice
-                print("That is not a choice.")
-                input("Press enter to continue.")
-    else: # Back in the main menu, some unkown choice
-        print("That is not a choice.")
-        input("Press enter to continue.")
+    games_file, settings_file = __load_files()
+    game_name = game_name.lower()
+    player_name = player_name.lower()
+    if game_name in ("", "quit") or game_name in games_file:
+        # If the game is named "quit", this creates problems elsewhere.
+        return "fail"
+    if score in ("", "quit") or ((not score.isdigit()) and
+                                 settings_file[game_name][1]):
+        return "fail"
+    if player_name in ("", "quit"):
+        return "fail"
+    scores = games_file[game_name]
+    done = False
+    for entry in scores:
+        if entry[1].lower() == player_name:
+            done = True
+            break
+    if done:
+        return "fail"
+    # At this point, there aren't any possible errors left.
+    entry = (score, player_name)
+    scores.append(entry)
+    # Add the score.
+    scores.sort(reverse=True)
+    scores = scores[:settings_file[game_name][0]]
+    # ^Each setting is a tuple, the first element is the value we're after.
+    # Sort and truncate the scores.
+    __save_files(games_file, settings_file)
+    return "success"
 
 
+def update_score(game_name, player_name, score):
+    """
+    Change a player's score in a game file.
+
+    If player or game doesn't exist, return "fail".
+    """
+    games_file, settings_file = __load_files()
+    game_name = game_name.lower()
+    player_name = player_name.lower()
+    if game_name in ("", "quit") or game_name in games_file:
+        # If the game is named "quit", this creates problems elsewhere.
+        return "fail"
+    if score in ("", "quit") or ((not score.isdigit()) and
+                                 settings_file[game_name][1]):
+        return "fail"
+    if player_name in ("", "quit"):
+        return "fail"
+    scores = games_file[game_name]
+    new_entry = (score, player_name)
+    done = False
+    i = 0
+    for entry in scores:
+        if entry[1].lower() == player_name:
+            scores[i] = new_entry
+            done = True
+            break
+    if not done:
+        # Since were updating, we will throw an error if the player
+        # doesn't exist.
+        return "fail"
+    # At this point there aren't any possible errors left.
+    scores.sort(reverse=True)
+    scores = scores[:settings_file[game_name][0]]
+    # Each setting is a tuple, the first element is the value we're after.
+    # Sort and truncate the scores.
+    __save_files(games_file, settings_file)
+    return "success"
 
 
-input("\n\n Press enter to exit")
+def write_score(game_name, player_name, score):
+    """
+    Add or update a score.
+
+    If game doesn't exist, return fail.
+    """
+    games_file, settings_file = __load_files()
+    game_name = game_name.lower()
+    player_name = player_name.lower()
+    if game_name in ("", "quit") or game_name in games_file:
+        # If the game is named "quit", this creates problems elsewhere.
+        return "fail"
+    if score in ("", "quit") or ((not score.isdigit()) and
+                                 settings_file[game_name][1]):
+        return "fail"
+    if player_name in ("", "quit"):
+        return "fail"
+    scores = games_file[game_name]
+    for entry in scores:
+        if entry[1].lower() == player_name:
+            entry[0] = score
+            scores.sort(reverse=True)
+            scores = scores[:settings_file[game_name][0]]
+            games_file[game_name] = scores
+            __save_files(games_file, settings_file)
+            return "success"
+    new_entry = (score, player_name)
+    scores.append(new_entry)
+    scores.sort(reverse=True)
+    scores = scores[:settings_file[game_name][0]]
+    games_file[game_name] = scores
+    __save_files(games_file, settings_file)
+    return "success"
+
+
+if __name__ == "__main__":
+    print("This file was meant to be accessed as a module, \
+not run on its own.")
+    input("\n\nPress enter to exit.")
+    quit()
