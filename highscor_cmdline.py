@@ -210,8 +210,9 @@ while choice != "0":
             # Show them all avaiable games by looping through the dictionary
 
         choose_game = input("Enter the name of a game to access that game: ")
+        choose_game = choose_game.lower()
         # Get user input
-        while choose_game.lower() not in games:
+        while choose_game not in games:
             if choose_game == "quit":
                 save_and_exit()
             print("That game is not avaliable.")
@@ -219,6 +220,7 @@ while choice != "0":
                 "Enter the name of a game to access \
             that game: "
             )
+            choose_game = choose_game.lower()
             # Make sure that it's actually a saved game
 
         scores = games[choose_game]  # Create local var for easy access
@@ -277,6 +279,7 @@ while choice != "0":
                     score = input("What did the player get? ")
 
                 name = input("Who scored this score? ")
+                name = name.lower()
                 # Get user input
                 while name in ("", "quit"):
                     if name == "quit":
@@ -288,10 +291,11 @@ while choice != "0":
 Possible issues:\n    - Didn't enter anything"
                     )
                     name = input("Who scored this score? ")
+                    name = name.lower()
 
                 done = False  # Sentry variable
                 for entry in scores:
-                    if entry[1].lower() == name.lower():
+                    if entry[1].lower() == name:
                         done = True
                         break
                 # ^Find out if player already has a score
@@ -319,6 +323,7 @@ Possible issues:\n    - Didn't enter anything"
                     print("Listing scores:")
                     list_scores(scores)
                     name = input("Whose score would you like to delete? ")
+                    name = name.lower()
                     # Get user input
                     if name == "quit":
                         games[choose_game] = scores
@@ -326,7 +331,7 @@ Possible issues:\n    - Didn't enter anything"
                         save_and_exit()
                     done = False
                     for entry in scores:
-                        if entry[1].lower() == name.lower():
+                        if entry[1] == name:
                             scores.remove(entry)
                             done = True
                             break
@@ -339,7 +344,7 @@ Possible issues:\n    - Didn't enter anything"
                 else:  # If there aren't any scores:
                     print(
                         "No scores have been added. Add a score first \
-                    to delete it."
+to delete it."
                     )
                 input("Press enter to continue.")
                 # ----------
@@ -350,6 +355,7 @@ Possible issues:\n    - Didn't enter anything"
                     done = False  # Sentry variable
                     while not done:
                         name = input("Whose score would you like to update? ")
+                        name = name.lower()
 
                         if name == "quit":
                             games[choose_game] = scores
@@ -357,7 +363,7 @@ Possible issues:\n    - Didn't enter anything"
                             save_and_exit()
 
                         for entry in scores:  # for each score-name pair
-                            if entry[1].lower() == name.lower():
+                            if entry[1] == name:
                                 # Check if entry belongs to the player
                                 done = True
                         if not done:
@@ -382,7 +388,7 @@ Wasn't a number"
                     done = False  # Sentry variable
                     i = 0  # Counter var
                     for entry in scores:  # for each score-name pair
-                        if entry[1].lower() == name.lower():
+                        if entry[1] == name:
                             # Check if entry belongs to the player
                             scores[i] = new_entry
                             # and if so update the score
@@ -400,7 +406,7 @@ Wasn't a number"
                 else:  # If there aren't any scores:
                     print(
                         "No scores have been added. Add a score first to\
-                     update it."
+update it."
                     )
                 input("Press enter to continue.")
                 # ----------
@@ -491,7 +497,8 @@ have to be numbers? (y/n) "
                 "Which player would you like to \
 view? "
             )
-            while choose_player.lower() not in players:
+            choose_player = choose_player.lower()
+            while choose_player not in players:
                 if choose_player == "quit":
                     save_and_exit()
                 print("That player has no scores yet.")

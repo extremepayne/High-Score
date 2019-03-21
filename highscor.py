@@ -68,7 +68,7 @@ def __load_files():
     except IOError as error:
         print(
             'Unable to open the file "highscorsettings.dat" \
-        Ending program.    \n',
+Ending program.    \n',
             error,
         )
         input("\n\nPress the enter key to exit.")
