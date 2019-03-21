@@ -3,4 +3,4 @@ python:
  - "3.5"
  - "3.6"
 script: 
-  - python highscor.py
+  - python highscor.py < testhighscor.txt
