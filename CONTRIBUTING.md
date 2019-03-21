@@ -12,6 +12,7 @@ This repo uses [black](https://github.com/ambv/black), an auto-formatter, for it
 and [standard README](https://github.com/RichardLitt/standard-readme), a template, for its README style. Please comply to these styles.
 
 Here's how to do it: [Github flow](https://help.github.com/en/articles/github-flow).
+First time? [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 
 ### Issues
 These are for anything you *can't* fix.
