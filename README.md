@@ -1,5 +1,6 @@
 # High-Score
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: pep 0257](https://img.shields.io/badge/code%20style-pep257-brightgreen.svg)](https://www.python.org/dev/peps/pep-0257/) [![Code style: pep 0008](https://img.shields.io/badge/code%20style-pep8-brightgreen.svg)](https://www.python.org/dev/peps/pep-0008/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+ [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 
 > Programs that save high scores to a file.
 
@@ -72,7 +73,7 @@ The file included here has the current version (v1.3.3).
 ## Contributing
 More than welcome! Please create issues/PRs for anything you think should be included that isn't. (Or bug/typo fixes, etc.)
 
-Note: This repo conforms to the following styleguides; please comply: [standard-readme](https://github.com/RichardLitt/standard-readme), [pep 257](https://www.python.org/dev/peps/pep-0257/) and [pep 8](https://www.python.org/dev/peps/pep-0008/).
+Note: This repo conforms to the following styleguides; please comply: [standard-readme](https://github.com/RichardLitt/standard-readme) and [black](https://github.com/ambv/black).
 
 ## License
 MIT License © Harrison Payne. See license in `LICENSE.md`

@@ -22,16 +22,22 @@ import shelve
 try:
     games_file = shelve.open("scores.dat")
 except IOError as error:
-    print("Unable to open the file \"scores.dat\" Ending program.\
-\n", error)
+    print(
+        'Unable to open the file "scores.dat" Ending program.\
+\n',
+        error,
+    )
     input("\n\nPress the enter key to exit.")
     quit()
 
 try:
     settings_file = shelve.open("highscorsettings.dat")
 except IOError as error:
-    print("Unable to open the file \"highscorsettings.dat\" Ending program.\
-\n", error)
+    print(
+        'Unable to open the file "highscorsettings.dat" Ending program.\
+\n',
+        error,
+    )
     input("\n\nPress the enter key to exit.")
     quit()
 # ^Get files
@@ -116,6 +122,7 @@ def save_and_exit():
 
     input("\n\n Press enter to exit")
     import sys
+
     sys.exit()
 
 
@@ -123,7 +130,7 @@ def ask_yes_no(question):
     """Ask the user a yes or no question, return a boolean variable."""
     output = input(question)
     while output not in ("y", "n", "quit"):
-        print("That is not \"y\" or \"n\"")
+        print('That is not "y" or "n"')
         output = input(question)
     if output == "y":
         rep = True
@@ -138,8 +145,10 @@ def ask_yes_no(question):
 
 # -----MAIN-----
 
-print("Welcome to HighScor v1.3.3!\nEnter \"quit\" at any prompt \
-to save and exit.")
+print(
+    'Welcome to HighScor v1.3.3!\nEnter "quit" at any prompt \
+to save and exit.'
+)
 
 
 choice = None  # Sentry variable
@@ -151,7 +160,8 @@ while choice != "0":
 
     Main Menu
     0 - Save and exit
-    1 - Add a game""")
+    1 - Add a game"""
+    )
 
     if len(games) > 0:
         # Best not to let the user access the games' files until
@@ -172,8 +182,10 @@ while choice != "0":
         while new_game == "" or new_game == "quit" or new_game in games:
             if new_game == "quit":
                 save_and_exit()
-            print("That is an invalid name for a game.\nPossible issues:\n\
-                - Didn't enter anything\n    - Name already taken")
+            print(
+                "That is an invalid name for a game.\nPossible issues:\n\
+                - Didn't enter anything\n    - Name already taken"
+            )
             new_game = input("What is the name of this game? ")
             new_game = new_game.lower()
         games[new_game] = []
@@ -190,7 +202,8 @@ while choice != "0":
     Manage games and scores
 
     List of games
-    """)
+    """
+        )
 
         for game in games:
             print("    -", game)
@@ -202,8 +215,10 @@ while choice != "0":
             if choose_game == "quit":
                 save_and_exit()
             print("That game is not avaliable.")
-            choose_game = input("Enter the name of a game to access \
-            that game: ")
+            choose_game = input(
+                "Enter the name of a game to access \
+            that game: "
+            )
             # Make sure that it's actually a saved game
 
         scores = games[choose_game]  # Create local var for easy access
@@ -214,16 +229,19 @@ while choice != "0":
                 """
     HighScor
     v1.3.3
-    """)
+    """
+            )
             print("   ", choose_game.title(), "Menu")
-            print("""
+            print(
+                """
     0 - Return to main menu
     1 - Display Scores
     2 - Add a score
     3 - Delete a score
     4 - Update a score
     5 - Delete this game
-    6 - Edit game settings\n""")
+    6 - Edit game settings\n"""
+            )
             choice = input("Choice: ")
             if choice == "0":
                 choice = "back0"  # Break the while loop
@@ -243,15 +261,19 @@ while choice != "0":
                 score = input("What did the player get? ")
                 # Get user input
 
-                while (score == "" or score == "quit" or
-                       ((not score.isdigit()) and
-                        settings[choose_game][1])):
+                while (
+                    score == ""
+                    or score == "quit"
+                    or ((not score.isdigit()) and settings[choose_game][1])
+                ):
                     if score == "quit":
                         games[choose_game] = scores
                         # Save scores to main dictionary
                         save_and_exit()
-                    print("That is an invalid score.\nPossible issues:\n    \
-                    - Didn't enter anything\n    - Wasn't a number")
+                    print(
+                        "That is an invalid score.\nPossible issues:\n    \
+                    - Didn't enter anything\n    - Wasn't a number"
+                    )
                     score = input("What did the player get? ")
 
                 name = input("Who scored this score? ")
@@ -261,8 +283,10 @@ while choice != "0":
                         games[choose_game] = scores
                         # Save scores to main dictionary
                         save_and_exit()
-                    print("That is an invalid name for a player.\n\
-Possible issues:\n    - Didn't enter anything")
+                    print(
+                        "That is an invalid name for a player.\n\
+Possible issues:\n    - Didn't enter anything"
+                    )
                     name = input("Who scored this score? ")
 
                 done = False  # Sentry variable
@@ -272,14 +296,17 @@ Possible issues:\n    - Didn't enter anything")
                         break
                 # ^Find out if player already has a score
                 if done:  # And if he does, inform the user.
-                    print(name.title(), "already has a score saved for this \
-                    game. \nYou can update his score with option 4.")
+                    print(
+                        name.title(),
+                        "already has a score saved for this \
+                    game. \nYou can update his score with option 4.",
+                    )
                 else:  # Otherwise, we save the score.
                     entry = (score, name)
                     scores.append(entry)
                     # Add the score.
                     scores.sort(reverse=True)
-                    scores = scores[:settings[choose_game][0]]
+                    scores = scores[: settings[choose_game][0]]
                     # Each setting is a tuple, first element is the
                     # value we're after.
                     # Sort and truncate the scores.
@@ -310,8 +337,10 @@ Possible issues:\n    - Didn't enter anything")
                         print("Player not found.")
                     # ^ Inform them of the results
                 else:  # If there aren't any scores:
-                    print("No scores have been added. Add a score first \
-                    to delete it.")
+                    print(
+                        "No scores have been added. Add a score first \
+                    to delete it."
+                    )
                 input("Press enter to continue.")
                 # ----------
             elif choice == "4":
@@ -335,16 +364,18 @@ Possible issues:\n    - Didn't enter anything")
                             print("Player not found.")
                     score = input("What is their new score? ")
 
-                    while (score == "" or
-                           score == "quit") or ((not score.isdigit()) and
-                                                settings[choose_game][1]):
+                    while (score == "" or score == "quit") or (
+                        (not score.isdigit()) and settings[choose_game][1]
+                    ):
                         if score == "quit":
                             games[choose_game] = scores
                             # Save scores to main dictionary
                             save_and_exit()
-                        print("That is an invalid score.\n\
+                        print(
+                            "That is an invalid score.\n\
 Possible issues:\n    - Didn't enter anything\n    - \
-Wasn't a number")
+Wasn't a number"
+                        )
                         score = input("What did the player get? ")
 
                     new_entry = (score, name)
@@ -360,15 +391,17 @@ Wasn't a number")
                             # and quit looping through the entries.
                         i += 1  # Update counter
                     scores.sort(reverse=True)
-                    scores = scores[:settings[choose_game][0]]
+                    scores = scores[: settings[choose_game][0]]
                     # Sort and truncate the scores.
                     if done:
                         print("Score updated.")
                     else:
                         print("Player not found.")
                 else:  # If there aren't any scores:
-                    print("No scores have been added. Add a score first to\
-                     update it.")
+                    print(
+                        "No scores have been added. Add a score first to\
+                     update it."
+                    )
                 input("Press enter to continue.")
                 # ----------
             elif choice == "5":
@@ -383,7 +416,8 @@ Wasn't a number")
             elif choice == "6":
                 choice = None
                 while choice != "back1":
-                    print("""
+                    print(
+                        """
     HighScor
     v1.3.3
 
@@ -391,15 +425,20 @@ Wasn't a number")
     0 - Return to game menu
     1 - Number of scores to keep on table
     2 - Scores do or do not have to be numbers
-    """)
+    """
+                    )
                     choice = input("Choice: ")
                     if choice == "1":
                         print("Current setting:", settings[choose_game][0])
                         done = False  # Sentry variable
                         while not done:
                             try:
-                                setting = int(input("How many scores should \
-this game keep? "))
+                                setting = int(
+                                    input(
+                                        "How many scores should \
+this game keep? "
+                                    )
+                                )
                                 if setting == "quit":
                                     games[choose_game] = scores
                                     # Save scores to main dictionary
@@ -408,18 +447,22 @@ this game keep? "))
                             except ValueError:
                                 # Triggered if the string can't be converted
                                 # into a number
-                                print("That is not a number. Please try \
-again.")
+                                print(
+                                    "That is not a number. Please try \
+again."
+                                )
                             else:
                                 done = True
                         settings[choose_game][0] = setting
-                        scores = scores[:settings[choose_game][0]]
+                        scores = scores[: settings[choose_game][0]]
                         # Truncate scores
                         input("Press enter to continue.")
                     elif choice == "2":
                         print("Current setting:", settings[choose_game][1])
-                        setting = ask_yes_no("Should all scores in this game \
-have to be numbers? (y/n) ")
+                        setting = ask_yes_no(
+                            "Should all scores in this game \
+have to be numbers? (y/n) "
+                        )
                         if not setting:
                             print("Warning: The scores will not be sorted.")
                         settings[choose_game][1] = setting
@@ -444,14 +487,18 @@ have to be numbers? (y/n) ")
         players = get_players()  # gets a list of the player's names
         list_players()  # Printing out the list of all the players
         if len(players) > 0:
-            choose_player = input("Which player would you like to \
-view? ")
+            choose_player = input(
+                "Which player would you like to \
+view? "
+            )
             while choose_player.lower() not in players:
                 if choose_player == "quit":
                     save_and_exit()
                 print("That player has no scores yet.")
-                choose_player = input("Which player would you like to \
-view? ")
+                choose_player = input(
+                    "Which player would you like to \
+view? "
+                )
             choose_player = choose_player.lower()
             list_player_scores(choose_player)
         input("Press enter to continue.")

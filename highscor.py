@@ -13,16 +13,22 @@ def __save_files(games, settings):
     try:
         games_file = shelve.open("scores.dat")
     except IOError as error:
-        print("Unable to open the file \"scores.dat\" Ending program.\
-    \n", error)
+        print(
+            'Unable to open the file "scores.dat" Ending program.\
+    \n',
+            error,
+        )
         input("\n\nPress the enter key to exit.")
         quit()
 
     try:
         settings_file = shelve.open("highscorsettings.dat")
     except IOError as error:
-        print("Unable to open the file \"highscorsettings.dat\" \
-        Ending program.    \n", error)
+        print(
+            'Unable to open the file "highscorsettings.dat" \
+        Ending program.    \n',
+            error,
+        )
         input("\n\nPress the enter key to exit.")
         quit()
     # ^Get files
@@ -49,16 +55,22 @@ def __load_files():
     try:
         games_file = shelve.open("scores.dat")
     except IOError as error:
-        print("Unable to open the file \"scores.dat\" Ending program.\
-    \n", error)
+        print(
+            'Unable to open the file "scores.dat" Ending program.\
+    \n',
+            error,
+        )
         input("\n\nPress the enter key to exit.")
         quit()
 
     try:
         settings_file = shelve.open("highscorsettings.dat")
     except IOError as error:
-        print("Unable to open the file \"highscorsettings.dat\" \
-        Ending program.    \n", error)
+        print(
+            'Unable to open the file "highscorsettings.dat" \
+        Ending program.    \n',
+            error,
+        )
         input("\n\nPress the enter key to exit.")
         quit()
     # ^Get files
@@ -99,8 +111,9 @@ def new_score(game_name, player_name, score):
     if game_name in ("", "quit") or game_name in games_file:
         # If the game is named "quit", this creates problems elsewhere.
         return "fail"
-    if score in ("", "quit") or ((not score.isdigit()) and
-                                 settings_file[game_name][1]):
+    if score in ("", "quit") or (
+        (not score.isdigit()) and settings_file[game_name][1]
+    ):
         return "fail"
     if player_name in ("", "quit"):
         return "fail"
@@ -117,7 +130,7 @@ def new_score(game_name, player_name, score):
     scores.append(entry)
     # Add the score.
     scores.sort(reverse=True)
-    scores = scores[:settings_file[game_name][0]]
+    scores = scores[: settings_file[game_name][0]]
     # ^Each setting is a tuple, the first element is the value we're after.
     # Sort and truncate the scores.
     __save_files(games_file, settings_file)
@@ -136,8 +149,9 @@ def update_score(game_name, player_name, score):
     if game_name in ("", "quit") or game_name in games_file:
         # If the game is named "quit", this creates problems elsewhere.
         return "fail"
-    if score in ("", "quit") or ((not score.isdigit()) and
-                                 settings_file[game_name][1]):
+    if score in ("", "quit") or (
+        (not score.isdigit()) and settings_file[game_name][1]
+    ):
         return "fail"
     if player_name in ("", "quit"):
         return "fail"
@@ -156,7 +170,7 @@ def update_score(game_name, player_name, score):
         return "fail"
     # At this point there aren't any possible errors left.
     scores.sort(reverse=True)
-    scores = scores[:settings_file[game_name][0]]
+    scores = scores[: settings_file[game_name][0]]
     # Each setting is a tuple, the first element is the value we're after.
     # Sort and truncate the scores.
     __save_files(games_file, settings_file)
@@ -175,8 +189,9 @@ def write_score(game_name, player_name, score):
     if game_name in ("", "quit") or game_name in games_file:
         # If the game is named "quit", this creates problems elsewhere.
         return "fail"
-    if score in ("", "quit") or ((not score.isdigit()) and
-                                 settings_file[game_name][1]):
+    if score in ("", "quit") or (
+        (not score.isdigit()) and settings_file[game_name][1]
+    ):
         return "fail"
     if player_name in ("", "quit"):
         return "fail"
@@ -185,21 +200,23 @@ def write_score(game_name, player_name, score):
         if entry[1].lower() == player_name:
             entry[0] = score
             scores.sort(reverse=True)
-            scores = scores[:settings_file[game_name][0]]
+            scores = scores[: settings_file[game_name][0]]
             games_file[game_name] = scores
             __save_files(games_file, settings_file)
             return "success"
     new_entry = (score, player_name)
     scores.append(new_entry)
     scores.sort(reverse=True)
-    scores = scores[:settings_file[game_name][0]]
+    scores = scores[: settings_file[game_name][0]]
     games_file[game_name] = scores
     __save_files(games_file, settings_file)
     return "success"
 
 
 if __name__ == "__main__":
-    print("This file was meant to be accessed as a module, \
-not run on its own.")
+    print(
+        "This file was meant to be accessed as a module, \
+not run on its own."
+    )
     input("\n\nPress enter to exit.")
     quit()
