@@ -1,4 +1,4 @@
-# High-Score
+# HighScor
 <p align="center">
 <a href "https://www.python.org/"><img alt="forthebadge made-with-python" src = "http://ForTheBadge.com/images/badges/made-with-python.svg">
 </p>
