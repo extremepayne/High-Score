@@ -218,7 +218,7 @@ while choice != "0":
             print("That game is not avaliable.")
             choose_game = input(
                 "Enter the name of a game to access \
-            that game: "
+that game: "
             )
             choose_game = choose_game.lower()
             # Make sure that it's actually a saved game
@@ -274,7 +274,7 @@ while choice != "0":
                         save_and_exit()
                     print(
                         "That is an invalid score.\nPossible issues:\n    \
-                    - Didn't enter anything\n    - Wasn't a number"
+    - Didn't enter anything\n    - Wasn't a number"
                     )
                     score = input("What did the player get? ")
 
