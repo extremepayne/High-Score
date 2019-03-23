@@ -9,5 +9,6 @@ install:
 script:
   - python highscor.py < tests/testhighscor.txt
   - python highscor_cmdline.py < tests/testhighscor_cmdline.txt
+  - coverage report --show-missing
 after_success:
   - coveralls
