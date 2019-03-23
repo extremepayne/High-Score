@@ -20,6 +20,7 @@ notanumber
 32
 
 Brit
+
 4
 notaplayer
 BrIt
@@ -29,8 +30,10 @@ BrIt
 
 3
 notaplayer
+
 3
 BRit
+
 1
 
 0
@@ -46,6 +49,7 @@ game
 n
 5
 y
+
 quit
 
 
