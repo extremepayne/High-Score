@@ -7,7 +7,7 @@ install:
   - pip install pytest-cov
   - pip install coveralls
 script:
-  - python highscor.py < tests/testhighscor.txt
+  - python highscor.py < tests/testhighscor2.txt
   - python highscor_cmdline.py < tests/testhighscor_cmdline.txt
   - py.test
 after_success:
