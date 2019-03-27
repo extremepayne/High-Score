@@ -213,6 +213,12 @@ def write_score(game_name, player_name, score):
     return "success"
 
 
+def list_scores(game_name):
+    games_file, settings_file = __load_files()
+    scores = games_file[game_name]
+    return scores
+
+
 if __name__ == "__main__":
     print(
         "This file was meant to be accessed as a module, \

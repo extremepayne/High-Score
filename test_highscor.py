@@ -1,4 +1,13 @@
 """test."""
 import highscor
 
-highscor.create_game_file("snake", 5, True)
+
+def test_highscor():
+    game = "snake"
+    highscor.create_game_file(game, 5, True)
+    highscor.write_score(game, "me", 24)
+    scores = highscor.list_scores(game)
+    print(scores)
+
+
+test_highscor()
