@@ -108,7 +108,7 @@ def new_score(game_name, player_name, score):
     games_file, settings_file = __load_files()
     game_name = game_name.lower()
     player_name = player_name.lower()
-    if game_name in ("", "quit") or game_name in games_file:
+    if game_name in ("", "quit") or game_name not in games_file:
         # If the game is named "quit", this creates problems elsewhere.
         return "fail"
     if score in ("", "quit"):
@@ -188,7 +188,7 @@ def write_score(game_name, player_name, score):
     games_file, settings_file = __load_files()
     game_name = game_name.lower()
     player_name = player_name.lower()
-    if game_name in ("", "quit") or game_name in games_file:
+    if game_name in ("", "quit") or game_name not in games_file:
         # If the game is named "quit", this creates problems elsewhere.
         return "fail"
     if score in ("", "quit"):
@@ -218,6 +218,9 @@ def write_score(game_name, player_name, score):
 
 def list_scores(game_name):
     games_file, settings_file = __load_files()
+    if game_name in ("", "quit") or game_name not in games_file:
+        # If the game is named "quit", this creates problems elsewhere.
+        return "fail"
     scores = games_file[game_name]
     return scores
 
