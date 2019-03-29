@@ -12,6 +12,3 @@ def test_highscor():
     print("2")
     scores = highscor.list_scores(game)
     print(scores)
-
-
-test_highscor()
