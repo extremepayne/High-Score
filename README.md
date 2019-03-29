@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis CI build status](https://travis-ci.org/extremepayne/HighScor.svg?branch=master)](https://travis-ci.org/extremepayne/HighScor) [![Coverage Status](https://coveralls.io/repos/github/extremepayne/HighScor/badge.svg)](https://coveralls.io/github/extremepayne/HighScor) [![BADGINATOR](https://badginator.herokuapp.com/extremepayne/highscor.svg)](https://github.com/defunctzombie/badginator)
 
 
-> Programs that save high scores to a file.
+> Python programs that save high scores to a file.
 
 The basic idea is that you add games, scores, and associate those scores with players. Additional functionality has also been added, including settings, viewing scores by player as well as by game, and so forth.
 The program works by shelving files with the highscores in them and retrieving them when necessary (actually only once at the start of the program; they're re-shelved only when the user chooses "save and quit").
