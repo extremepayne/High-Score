@@ -2,7 +2,7 @@
 <p align="center">
 <a href "https://www.python.org/"><img alt="forthebadge made-with-python" src = "http://ForTheBadge.com/images/badges/made-with-python.svg">
 </p>
-    
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis CI build status](https://travis-ci.org/extremepayne/HighScor.svg?branch=master)](https://travis-ci.org/extremepayne/HighScor) [![Coverage Status](https://coveralls.io/repos/github/extremepayne/HighScor/badge.svg)](https://coveralls.io/github/extremepayne/HighScor) [![BADGINATOR](https://badginator.herokuapp.com/extremepayne/highscor.svg)](https://github.com/defunctzombie/badginator)
 
 
@@ -27,17 +27,17 @@ This program was created originally as a response to the fact that the games on 
 You need [python 3.x downloaded on your computer](https://www.python.org/downloads/). Clone the project. If necessary, unzip it. Yep, that's it!
 
 ## Usage
-The project has two interfaces, currently only the CLI is working (API under development.)
+The project has two interfaces, currently only the text-based is working (API under development.)
 
 Run the file marked `highscor_cmdline.py` however you run python files.
-#### Running python files
+### Running python files
 If you're not familiar with python and don't know how to run a file, there are several options:
 * [Use the command line in windows to execute a script](https://docs.python.org/3/faq/windows.html#id2)
 * Right-click the file, open with IDLE (comes pre-loaded with python) and press F5
 * Download [atom](https://www.atom.io) and the [run-python-simply package](https://atom.io/packages/run-python-simply), open the file (or clone the repo) with atom, and press F5 (python must be in PATH) (I don't recommend this method unless you already understand how programming works)
 
-#### CLI
-Alright, you're ready to save some scores! The program uses a command-line like interface, but never fear, there's no need to memorize any commands. Everything you need to know will be on a menu right before the prompt. There are a few types of prompts:
+### Text interface
+Alright, you're ready to save some scores! The program uses a text based interface, but never fear, there's no need to memorize any commands. Everything you need to know will be on a menu right before the prompt. There are a few types of prompts:
 Regular menus:
 ```
     Main Menu
